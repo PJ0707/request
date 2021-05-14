@@ -1,10 +1,11 @@
 <?php
 session_start(); 
-$host="local host"; 
-$user="FTS"; 
+$host="localhost"; 
+$user="user"; 
 $password=""; 
-$db="users_login_details"; 
-$con=mysqli_connect($host,$user,$password,$db); 
+$port="3307";
+$db="user_login_details"; 
+$con=mysqli_connect($host,$user,$password,$db,$port); 
 $id=$_SESSION['id']; 
 $query="select fname from faculty_table where fid='".$id."'"; 
 $result= mysqli_query($con,$query); 

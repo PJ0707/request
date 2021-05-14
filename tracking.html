@@ -6,53 +6,29 @@
  <title>Track_page</title>
  <meta content="" name="descriptison">
  <meta content="" name="keywords">
-<!-- Google Fonts -->
- <link href="https://fonts.googleapis.com/css?family=Open+Sans:
-300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,50
-0,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,
-600i,700,700i" rel="stylesheet">
- <link href="css/bootstrap.min.css" rel="stylesheet">
- <link href="css/aos.css" rel="stylesheet">
- <link href="selection_style.css" rel="stylesheet">
+ <style>
+ 	body
+ 	{
+ 		padding-bottom: 400px;
+ 		background:url(k.jpg);
+ 		background-position: center;
+ 		background-repeat: no-repeat;
+ 		background-size: cover;
+ 	}
+ </style>
 </head>
 <body>
-<img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFVqXqqaIl4phDSDgqUq0M3nMzqnvxS17-Uw&usqp=CAU" width="110" height="12
-0">
-<a href="logout.php"><button style = "float:right;" class="butto
-n"><span id="font1">LogOut </span></button></a>
-<main id="main">
-<form method="POST" >
- <section id="why-us" class="why-us">
- <div class="container">
- <div class="row">
-<?php
- if (mysqli_num_rows($result) > 0) { 
- while($row = mysqli_fetch_assoc($result)) { 
- $fid = $row["fileid"] ; 
- $fname = $row["fname"] ; 
- 
- ?> 
- <div class="col-sm-10 col-md-10 col-lg-10" dataaos="fade-up">
- <div class="box">
+<img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFVqXqqaIl4phDSDgqUq0M3nMzqnvxS17-Uw&usqp=CAU" width="250" height="200">
+<a href="selection.html"><button style="float: right; "class="w3-button w3-red w3-round-large">Go back >></button></a>
+<a href="logout.html"><button style = "float:right;" class="button"><span id="font1">LogOut </span></button></a>
+<form method="POST" action="status.html" >
  <span><?php echo $fid?></span>
  <span><?php echo $fname?> </span> 
- 
- <input style="float:right;" type="submit" n
-ame="<?php echo $fid; ?>" value="tracking"> 
- </div>
- </div>
- <?php
- 
- } 
- } 
- 
- ?>
- 
- </div>
- </div>
- </section><!-- End Why Us Section -->
+ <div>
+  <input style="float:right;" type="submit" name="<?php echo $fid; ?>" value="track"> 
+
+</div>
 </form>
-</main><!-- End #main -->
 <a href="#" class="back-to-top"><i class="icofont-simpleup"></i></a>
  <div id="preloader"></div>
  <!-- Vendor JS Files -->
@@ -64,7 +40,7 @@ ame="<?php echo $fid; ?>" value="tracking">
  <script src="selection_main.js"></script>
 <?php
 extract($_REQUEST); 
-$query="select fileid from file_table where id='".$id."'"; 
+$query="select fileid from file where id='".$id."'"; 
 $result= mysqli_query($con,$query); 
 while($row = mysqli_fetch_assoc($result)) { 
  $rid=$row["fileid"]; 
@@ -72,10 +48,7 @@ while($row = mysqli_fetch_assoc($result)) {
  { 
  $_SESSION["rid"] = $rid; 
  ?>
- <script>
  
- location.replace("next_track.php"); 
- </script>
  <?php
  
  } 
